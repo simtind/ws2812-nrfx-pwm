@@ -1,0 +1,6 @@
+manifest:
+  version: "0.12"
+  # West-related configuration for the repository.
+  self:
+    # This repository should be cloned to ncs/nrf.
+    path: ws2812_nrfx_pwm

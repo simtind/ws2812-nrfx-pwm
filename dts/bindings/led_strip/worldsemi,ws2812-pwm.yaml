@@ -1,0 +1,55 @@
+# Copyright (c) 2019, Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Worldsemi WS2812 LED strip, nRFX PWM binding
+
+  Driver bindings for controlling a WS2812 or compatible LED
+  strip with a PWM output.
+
+  Use of this driver implies an 16x internal memory overhead (2 bytes of
+  driver RAM overhead per bit of pixel data).
+
+compatible: "worldsemi,ws2812-pwm"
+
+include: 
+  - ws2812.yaml
+  - pinctrl-device.yaml
+  - name: base.yaml
+    property-allowlist: [label, status]
+
+properties:
+  label:
+    required: false
+    type: string
+    description: |
+      Human readable string describing the LED. It can be used by an
+      application to identify this LED or to retrieve its number/index
+      (i.e. child node number) on the parent device. 
+  out-pin:
+    type: int
+    required: true
+    description: |
+      The RGB strip data pin.
+
+  pwm-instance:
+    type: phandle
+    required: true
+    description: Node label of target PWM instance.
+    
+  pwm-inverted:
+    type: boolean
+    required: false
+    description: Invert data output.
+  
+  pwm-one-frame:
+    type: int
+    required: false
+    default: 0x000D
+    description: 16-bit PWM frame to shift out for a 1 pulse.
+
+  pwm-zero-frame:
+    type: int
+    required: false
+    default: 0x0006
+    description: 16-bit SPI frame to shift out for a 0 pulse.
