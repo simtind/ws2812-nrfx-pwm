@@ -1,0 +1,8 @@
+name: ws2812-nrfx-pwm
+
+build:
+  settings:
+    dts_root: .
+    module_ext_root: .
+  cmake-ext: True
+  kconfig-ext: True

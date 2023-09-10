@@ -1,0 +1,14 @@
+# Top-level configuration file for LED strip drivers.
+
+# Copyright (c) 2017 Linaro Limited
+# Copyright (c) 2018 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+config WS2812_STRIP_NRFX_PWM
+	bool "PWM driver"
+	depends on NRFX_PWM
+	help
+	  Enable LED strip driver for daisy chains of WS2812-ish (or WS2812B,
+	  WS2813, SK6812, Everlight B1414, or compatible) devices using the nrfx PWM driver.
+	  The nRFx PWM driver only uses a single pin, but requires significantly more
+	  memory (2 bytes of overhead per bit of pixel data).
